@@ -4,16 +4,37 @@
     ViewBag.Title = "Home Page";
 }
 
+<style>
+    .twitterUserItem {
+        float: left;
+        clear: both;
+    }
+
+    .logo {
+        float: left;
+        clear: both;
+    }
+
+    .desc {
+        float: left;
+        margin-left: 10px;
+    }
+</style>
+
 <div class="row">
     <div class="col-md-12">
         <h2>Users with Biggest Impact</h2>
 
         @foreach(var user in Model)
         {
-            <div>
-                <img src="@user.ImageUrl"/>
-                <p>@user.ScreenName</p>
-                <p>Impact = @user.Impact</p>
+            <div class="twitterUserItem">
+                <div class="logo">
+                    <img src="@user.ImageUrl" alt="Profile Image"/>
+                </div>
+                <div class="desc">
+                    <p>@user.ScreenName</p>
+                    <p>Impact = @user.Impact</p>
+                </div>
             </div>
         }
     </div>
