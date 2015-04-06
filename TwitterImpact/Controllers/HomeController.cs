@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 using LinqToTwitter;
 using TwitterImpact.Core;
@@ -11,6 +7,8 @@ namespace TwitterImpact.Controllers
 {
     public class HomeController : Controller
     {
+        private const int NumUsersToShow = 10; //(todo) Make this configurable
+
         [ActionName("Index"), Authorize]
         public async Task<ActionResult> IndexAsync()
         {
@@ -26,7 +24,7 @@ namespace TwitterImpact.Controllers
 
             var repo = new TwitterRepository(auth);
 
-            var tweets = repo.ListTweets();
+            var tweets = repo.ListTopUsers(NumUsersToShow);
 
             await tweets;
 

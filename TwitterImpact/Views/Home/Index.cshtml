@@ -1,4 +1,4 @@
-﻿@model List<TwitterImpact.Core.TweetViewModel>
+﻿@model List<TwitterImpact.Core.TwitterUserViewModel>
 
 @{
     ViewBag.Title = "Home Page";
@@ -8,9 +8,13 @@
     <div class="col-md-12">
         <h2>Users with Biggest Impact</h2>
 
-        @foreach(var tweet in Model)
+        @foreach(var user in Model)
         {
-            @tweet.ScreenName<text>: </text>@tweet.Text
+            <div>
+                <img src="@user.ImageUrl"/>
+                <p>@user.ScreenName</p>
+                <p>Impact = @user.Impact</p>
+            </div>
         }
     </div>
 </div>
