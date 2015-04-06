@@ -11,7 +11,7 @@ namespace TwitterImpact.Controllers
 {
     public class HomeController : Controller
     {
-        [ActionName("Index")]
+        [ActionName("Index"), Authorize]
         public async Task<ActionResult> IndexAsync()
         {
             if(!new SessionStateCredentialStore().HasAllCredentials())

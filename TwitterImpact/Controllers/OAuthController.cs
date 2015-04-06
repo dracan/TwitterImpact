@@ -9,11 +9,13 @@ namespace TwitterImpact.Controllers
     public class OAuthController : AsyncController
     {
         // GET: OAuth
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize]
         public async Task<ActionResult> BeginAsync()
         {
             //var auth = new MvcSignInAuthorizer
@@ -30,6 +32,7 @@ namespace TwitterImpact.Controllers
             return await auth.BeginAuthorizationAsync(new Uri(twitterCallbackUrl));
         }
 
+        [Authorize]
         public async Task<ActionResult> CompleteAsync()
         {
             var auth = new MvcAuthorizer
