@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LinqToTwitter;
 
 namespace TwitterImpact.Controllers
 {
@@ -10,6 +11,11 @@ namespace TwitterImpact.Controllers
     {
         public ActionResult Index()
         {
+            if(!new SessionStateCredentialStore().HasAllCredentials())
+            {
+                return RedirectToAction("Index", "OAuth");
+            }
+
             return View();
         }
 
